@@ -1,0 +1,6 @@
+<p>Поезда следующие по данному маршруту:</p>
+<ul>
+  <%  @route.trains.each do |train| %>
+    <li><%= "Поезд №: #{train.number}" %></li>
+  <%end %>
+</ul>

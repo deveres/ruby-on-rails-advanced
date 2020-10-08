@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Номер:</strong>
+  <%= @train.number %>
+</p>
+
+<% if @train.current_route.present? %>
+  <%= render 'current_route' %>
+<%else %>
+  <%= render  "no_route" %>
+<%end %>
+
+<% if @train.current_station.present? %>
+  <%= render 'current_station' %>
+<%else %>
+  <%= render 'no_station' %>
+<%end %>
+
+
+<%= link_to 'Редактировать', edit_train_path(@train) %> |
+<%= link_to 'Назад', trains_path %>

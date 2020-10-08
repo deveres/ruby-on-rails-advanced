@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Название маршрута:</strong>
+  <%= @route.name %>
+</p>
+
+<%  if  @route.trains.empty? %>
+
+  <%= render 'no_trains' %>
+<% else %>
+  <%= render 'current_trains' %>
+<%end %>
+
+<%= link_to 'Редактировать', edit_route_path(@route) %> |
+<%= link_to 'Назад', routes_path %>

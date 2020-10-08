@@ -1,0 +1,15 @@
+<%= form_with(model: route, local: true) do |form| %>
+
+  <%=render 'common/errors' , resource: route %>
+
+
+
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Сохранить' %>
+    </div>
+  <% end %>
