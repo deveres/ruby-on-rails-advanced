@@ -1,9 +1,12 @@
 <p id="notice"><%= notice %></p>
-
+<h1>Данные поезда</h1>
+<hr>
 <p>
   <strong>Номер:</strong>
   <%= @train.number %>
 </p>
+<br>
+<br>
 
 <% if @train.current_route.present? %>
   <%= render 'current_route' %>

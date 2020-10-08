@@ -1,15 +1,21 @@
 <p id="notice"><%= notice %></p>
-
+<h1>Данные о станции</h1>
+<hr>
 <p>
   <strong>Название:</strong>
   <%= @railway_station.title %>
 </p>
+<br>
+<br>
 
 <%  if  @railway_station.routes.empty? %>
-  <p>Станция не входит ни в один маршрут</p>
+  <div class="alert alert-info" role="alert">
+    Станция не входит ни в один маршрут
+  </div>
+
 <% else %>
-  <p>Станция входит в следующие маршруты:</p>
-  <ul>
+  <h5 class="text-success">Станция входит в следующие маршруты:</h5>
+  <ul class="list-style">
   <%  @railway_station.routes.each do |route| %>
       <li><%= route.name %></li>
   <%end %>

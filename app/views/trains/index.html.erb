@@ -2,13 +2,16 @@
 
 <h1>Список поездов</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
-    <tr>
-      <th>Номер</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+
+    <th scope="col">Номер поезда</th>
+    <th colspan="3" class="w-25"></th>
+
+  </tr>
   </thead>
+
 
   <tbody>
 
@@ -19,4 +22,4 @@
 
 <br>
 
-<%= link_to 'Добавить поезд', new_train_path %>
+<%= link_to 'Добавить поезд', new_train_path, :class=>"btn btn-primary" %>
