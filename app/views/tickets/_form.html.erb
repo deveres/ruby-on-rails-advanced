@@ -1,0 +1,44 @@
+<%= form_with(model: ticket, local: true) do |form| %>
+
+  <%=render 'common/errors' , resource: ticket %>
+
+  <%= hidden_field_tag("ticket[user_id]", "0") %>
+
+
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, :class=>"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, :class=>"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :middle_name %>
+    <%= form.text_field :middle_name, :class=>"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :train %>
+    <%= form.collection_select :train_id, Train.all, :id, :number , {} ,:class=>"form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :start_station %>
+    <%= form.collection_select :start_station_id, RailwayStation.all, :id, :title , {} ,:class=>"form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :end_station %>
+    <%= form.collection_select :end_station_id, RailwayStation.all, :id, :title , {} ,:class=>"form-control"%>
+  </div>
+
+
+
+  <div class="actions">
+      <%= form.submit 'Сохранить',:class=>"btn btn-success" %>
+    </div>
+  <% end %>

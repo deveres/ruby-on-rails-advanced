@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+<h1>Данные о билете</h1>
+<hr>
+
+<div class="form-horizontal">
+
+
+  <div class="form-group">
+    <div class="col-sm-3">
+      <label for="brand" class="required pull-right">ФИО пассажира</label>
+    </div>
+    <div class="col-sm-9">
+      <%= "#{@ticket.last_name} #{@ticket.first_name} #{@ticket.middle_name}"  %>
+    </div>
+  </div>
+
+
+
+  <div class="form-group">
+    <div class="col-sm-3">
+      <label for="brand" class="required pull-right">Прикреплен к поезду</label>
+    </div>
+    <div class="col-sm-9">
+      <%= @ticket.train.number if @ticket.train.present?  %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-3">
+      <label for="brand" class="required pull-right">От станции</label>
+    </div>
+    <div class="col-sm-9">
+      <%= @ticket.start_station.title if @ticket.start_station.present?  %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-3">
+      <label for="brand" class="required pull-right">До станции</label>
+    </div>
+    <div class="col-sm-9">
+      <%= @ticket.end_station.title if @ticket.end_station.present?  %>
+    </div>
+  </div>
+
+</div>
+
+<br>
+<br>
+
+<%= link_to 'Редактировать', edit_ticket_path(@ticket) %> |
+<%= link_to 'Назад', tickets_path %>

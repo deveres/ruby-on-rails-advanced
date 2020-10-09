@@ -1,0 +1,14 @@
+
+
+<tr>
+  <td><%= ticket.id %></td>
+  <td><%= ticket.created_at %></td>
+  <td><%= ticket.train.number if ticket.train.present? %></td>
+  <td><%= ticket.start_station.title if ticket.start_station.present? %></td>
+  <td><%= ticket.end_station.title if ticket.end_station.present? %></td>
+  <td><%= "#{ticket.last_name} #{ticket.first_name} #{ticket.middle_name}" %></td>
+
+  <td><%= link_to 'Просмотр', ticket, :class=>'btn btn-xs btn-info'%></td>
+  <td><%= link_to 'Редактировать', edit_ticket_path(ticket), :class=>'btn btn-xs btn-success' %></td>
+  <td><%= link_to 'Удалить', ticket, method: :delete, data: { confirm: 'Подтвредите удаление билета?' }, :class=>'btn btn-xs btn-danger' %></td>
+</tr>
