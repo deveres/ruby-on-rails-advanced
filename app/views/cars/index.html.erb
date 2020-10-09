@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Список вагонов</h1>
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+
+    <th scope="col">ID</th>
+    <th scope="col">Тип</th>
+    <th scope="col">Верхние места</th>
+    <th scope="col">Нижние места</th>
+    <th scope="col">Прикреплен к поезду...</th>
+    <th colspan="3" class="w-25"></th>
+
+  </tr>
+  </thead>
+
+
+  <tbody>
+
+  <%=render @cars %>
+
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Добавить вагон', new_car_path, :class=>"btn btn-primary" %>

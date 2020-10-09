@@ -1,21 +1,61 @@
 <p id="notice"><%= notice %></p>
+<h1>Данные поезда</h1>
+<hr>
+<div class="form-horizontal">
+  <div class="form-group">
+    <div class="col-sm-4">
+      <label for="brand" class="required pull-right">Номер:</label>
+    </div>
+    <div class="col-sm-8">
+      <%= @train.number %>
+    </div>
 
-<p>
-  <strong>Номер:</strong>
-  <%= @train.number %>
-</p>
+  </div>
 
-<% if @train.current_route.present? %>
-  <%= render 'current_route' %>
-<%else %>
-  <%= render  "no_route" %>
-<%end %>
+  <div class="form-group">
+    <div class="col-sm-4">
+      <label for="brand" class="required pull-right">Следует по маршруту:</label>
+    </div>
+    <div class="col-sm-8">
+      <% if @train.route.present? %>
 
-<% if @train.current_station.present? %>
-  <%= render 'current_station' %>
-<%else %>
-  <%= render 'no_station' %>
-<%end %>
+        <span class="text-success"><%= @train.route.name %></span>
+      <%else %>
+        <span class="text-danger">Маршрут не назначен</span>
+      <%end %>
+
+    </div>
+
+  </div>
+
+
+  <% Car::CAR_TYPE_COLLECTION.each do |key, val| %>
+
+    <div class="form-group">
+      <div class="col-sm-4">
+        <label for="brand" class="required pull-right"><%= "#{val[:label]} вагонов:" %></label>
+      </div>
+      <div class="col-sm-8">
+        <%= @train.cars_total(val[:type]) %>
+      </div>
+    </div>
+<% end %>
+
+  <% Car::CAR_TYPE_COLLECTION.each do |key, data| %>
+    <% Car::CAR_PLACES.each do |label, place_name| %>
+    <div class="form-group">
+      <div class="col-sm-4">
+        <label for="brand" class="required pull-right"><%= "#{data[:label]} #{place_name} мест:" %></label>
+      </div>
+      <div class="col-sm-8">
+        <%= @train.car_seats(data[:type], label) %>
+      </div>
+    </div>
+  <% end %>
+  <% end %>
+
+</div>
+
 
 
 <%= link_to 'Редактировать', edit_train_path(@train) %> |

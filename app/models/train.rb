@@ -6,8 +6,18 @@ class Train < ApplicationRecord
                       message: "Не правильный формат номера поезда" }
 
 
-  belongs_to :current_station, class_name: 'RailwayStation', foreign_key: :current_station_id
-  belongs_to :current_route, class_name: 'Route', foreign_key: :current_route_id
 
+  belongs_to :route
   has_many :tickets,  dependent: :destroy
+  has_many :cars,  dependent: :destroy
+
+  # Count type car seats
+  def car_seats(car_type, seat_type)
+    Car.where(type_id: car_type, train_id: self.id).sum("#{seat_type}_seats")
+  end
+
+  def cars_total(car_type)
+    Car.where(type_id: car_type, train_id: self.id).count()
+  end
+
 end
