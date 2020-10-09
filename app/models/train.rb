@@ -9,7 +9,7 @@ class Train < ApplicationRecord
 
   belongs_to :route
   has_many :tickets,  dependent: :destroy
-  has_many :cars,  dependent: :destroy
+  has_many :cars
 
   # Count type car seats
   def car_seats(car_type, seat_type)
