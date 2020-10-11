@@ -1,9 +1,7 @@
 class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
+  before_action :set_train, only: [:new, :create]
 
-  def index
-    @cars = Car.all
-  end
 
   def show
   end
@@ -13,29 +11,33 @@ class CarsController < ApplicationController
   end
 
   def create
-    @car = Car.new(car_params)
+
+    @car = @train.cars.build(car_params)
+
 
     if @car.save
-      redirect_to @car
+      redirect_to @train, notice: 'Вагон добавлен'
     else
-      render :new
+      render 'new'
     end
   end
 
   def edit
+    @train = @car.train
   end
 
   def update
     if @car.update(car_params)
-      redirect_to @car
+      redirect_to @car.train
     else
       render :edit
     end
   end
 
   def destroy
+    train = @car.train
     @car.destroy
-    redirect_to cars_path
+    redirect_to train, notice: 'Вагон удален'
   end
 
   private
@@ -44,8 +46,12 @@ class CarsController < ApplicationController
     @car = Car.find(params[:id])
   end
 
+  def set_train
+    @train = Train.find(params[:train_id])
+  end
+
   # Only allow a list of trusted parameters through.
   def car_params
-    params.require(:car).permit(:type_id, :top_seats, :bottom_seats, :train_id)
+    params.require(:car).permit(:type, :top_seats, :bottom_seats, :side_top_seats, :side_bottom_seats, :train_id)
   end
 end

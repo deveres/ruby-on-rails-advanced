@@ -1,33 +1,41 @@
-<%= form_with(model: car, local: true) do |form| %>
+<%= form_with(model: [train, car], local: true, url: car.new_record? ? train_cars_path(train) : car_path(car), scope: :car) do |form| %>
 
-  <%=render 'common/errors' , resource: car %>
+  <%= render 'common/errors', resource: car %>
 
 
 
-    <div class="field">
-      <%= form.label :type_id %>
+  <div class="field">
+    <%= form.label :type %>
 
-      <%= form.select :type_id, options_for_select(Car::CAR_TYPE.collect { |k, v| [t(v), k] }, @car.type_id), {}, :class=>"form-control" %>
-    </div>
+    <%= form.select :type, options_for_select(Car::CAR_TYPE.collect { |k, v| [v[:label], k] }, car.type), {}, :class => "form-control" %>
+  </div>
 
 
   <div class="field">
     <%= form.label :top_seats %>
-    <%= form.text_field :top_seats, :class=>"form-control" %>
+    <%= form.text_field :top_seats, :class => "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :bottom_seats %>
-    <%= form.text_field :bottom_seats, :class=>"form-control" %>
+    <%= form.text_field :bottom_seats, :class => "form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= form.label :train %>
-    <%= form.collection_select :train_id, Train.all, :id, :number , {} ,:class=>"form-control"%>
+  <div class="field">
+    <%= form.label :side_top_seats %>
+    <%= form.text_field :side_top_seats, :class => "form-control" %>
   </div>
+
+  <div class="field">
+    <%= form.label :side_bottom_seats %>
+    <%= form.text_field :side_bottom_seats, :class => "form-control" %>
+  </div>
+
+
 
 
   <div class="actions">
-      <%= form.submit 'Сохранить',:class=>"btn btn-success" %>
-    </div>
-  <% end %>
+    <%= link_to "Назад", train, class: 'btn btn-default' %>
+    <%= form.submit "#{car.new_record? ? 'Добавить' : 'Изменить'}", :class => "btn btn-success" %>
+  </div>
+<% end %>

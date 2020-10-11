@@ -8,7 +8,7 @@
 <br>
 <br>
 
-<%  if  @railway_station.routes.empty? %>
+<% if @railway_station.routes.empty? %>
   <div class="alert alert-info" role="alert">
     Станция не входит ни в один маршрут
   </div>
@@ -16,11 +16,11 @@
 <% else %>
   <h5 class="text-success">Станция входит в следующие маршруты:</h5>
   <ul class="list-style">
-  <%  @railway_station.routes.each do |route| %>
+    <% @railway_station.routes.each do |route| %>
       <li><%= route.name %></li>
-  <%end %>
+    <% end %>
   </ul>
-<%end %>
+<% end %>
 
 <%= link_to 'Редактировать', edit_railway_station_path(@railway_station) %> |
 <%= link_to 'Назад', railway_stations_path %>

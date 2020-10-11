@@ -1,7 +1,7 @@
 class RailwayStationsRoutesController < ApplicationController
   #http_basic_authenticate_with name:'admin', password:'123'
 
-  before_action :set_railway_stations_route, only: [:destroy]
+  before_action :set_railway_stations_route, only: [:update, :destroy]
 
   def create
     @route = Route.find(params[:route_id])
@@ -9,9 +9,20 @@ class RailwayStationsRoutesController < ApplicationController
     @railway_stations_route.route = @route
 
     if (@railway_stations_route.save)
-      redirect_to route_path(@route),  notice: "Станция успешно добавлена в маршрут"
+      redirect_to route_path(@route), notice: "Станция успешно добавлена в маршрут"
     else
-      redirect_to route_path(@route), alert:  @railway_stations_route.errors.full_messages.first
+      redirect_to route_path(@route), alert: @railway_stations_route.errors.full_messages.first
+    end
+
+  end
+
+  def update
+    @route = @railway_stations_route.route
+
+    if @railway_stations_route.update(railway_stations_route_params)
+      redirect_to route_path(@route), notice: "Данные обновлены"
+    else
+      redirect_to route_path(@route), alert: @railway_stations_route.errors.full_messages.first
     end
 
   end
@@ -30,6 +41,6 @@ class RailwayStationsRoutesController < ApplicationController
   end
 
   def railway_stations_route_params
-    params.require(:railway_stations_route).permit(:railway_station_id)
+    params.require(:railway_stations_route).permit(:railway_station_id, :position)
   end
 end
