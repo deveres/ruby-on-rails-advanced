@@ -1,5 +1,7 @@
-<h1>Новый вагон</h1>
+<h1>Новый вагон для поезда</h1>
 
-<%= render 'form', car: @car %>
+<%= render 'form', train: @train, car: @car %>
 
-<%= link_to 'Назад', cars_path %>
+
+<%= link_to 'Назад', train_path(@train) %>
+

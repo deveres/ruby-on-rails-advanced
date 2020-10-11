@@ -2,31 +2,14 @@
 <h1>Данные о вагоне</h1>
 <hr>
 
+
 <div class="form-horizontal">
   <div class="form-group">
     <div class="col-sm-3">
       <label for="brand" class="required pull-right">Тип вагона</label>
     </div>
     <div class="col-sm-9">
-      <%= Car::CAR_TYPE[@car.type_id] if @car.type_id > 0 %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="col-sm-3">
-      <label for="brand" class="required pull-right">Количество верхних мест</label>
-    </div>
-    <div class="col-sm-9">
-      <%= @car.top_seats  %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="col-sm-3">
-      <label for="brand" class="required pull-right">Количество нижних мест</label>
-    </div>
-    <div class="col-sm-9">
-      <%= @car.bottom_seats  %>
+      <%= @car.car_type %>
     </div>
   </div>
 
@@ -36,14 +19,21 @@
       <label for="brand" class="required pull-right">Прикреплен к поезду</label>
     </div>
     <div class="col-sm-9">
-      <%= @car.train.number if @car.train.present?  %>
+      <% if @car.train.present? %>
+        <%= link_to @car.train.number, @car.train %>
+      <% else %>
+
+      <% end %>
+
+
     </div>
   </div>
 
+  <%= render "show_#{@car.type.underscore}" %>
 </div>
 
 <br>
 <br>
 
 <%= link_to 'Редактировать', edit_car_path(@car) %> |
-<%= link_to 'Назад', cars_path %>
+<%= link_to 'Назад', train_path(@car.train) %>

@@ -3,7 +3,8 @@
   <thead>
   <tr>
 
-    <th scope="col">Название маршрута</th>
+    <th scope="col">Название станции</th>
+    <th scope="col">Порядковый номер</th>
     <th colspan="3" class="w-25"></th>
 
   </tr>
@@ -12,13 +13,13 @@
 
   <tbody>
 
-  <% @route.railway_stations_routes.each do |railway_stations_route|%>
+  <% @route.railway_stations_routes.ordered.each do |railway_stations_route| %>
 
     <tr>
       <td><%= railway_stations_route.railway_station.title %></td>
-      <td><%= link_to 'Удалить', route_railway_stations_route_path(@route, railway_stations_route), method: :delete, data: { confirm: 'Подтвредите удаление станции из маршрута?' }, :class=>'btn btn-xs btn-danger' %></td>
+      <td><%= render 'current_sation_list_form', route: @route, railway_stations_route: railway_stations_route %></td>
+      <td><%= link_to 'Удалить', route_railway_stations_route_path(@route, railway_stations_route), method: :delete, data: {confirm: 'Подтвредите удаление станции из маршрута?'}, :class => 'btn btn-xs btn-danger' %></td>
     </tr>
-
 
 
   <% end %>

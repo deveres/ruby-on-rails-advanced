@@ -1,0 +1,13 @@
+<%= form_with(model: [route, railway_stations_route], local: true) do |form| %>
+
+
+  <table class="table table-bordered table-stripped">
+
+    <tr>
+      <td><%= form.number_field :position, class: 'form-control' %></td>
+      <td><%= form.submit "Применить", :class => "btn btn-success btn-xs" %></td>
+    </tr>
+
+
+  </table>
+<% end %>

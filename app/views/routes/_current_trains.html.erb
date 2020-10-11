@@ -1,7 +1,12 @@
 <h5 class="text-success">Поезда следующие по данному маршруту:</h5>
-<ul class="list-style">
 
-  <%  @route.trains.each do |train| %>
-    <li><%= "Поезд №: #{train.number}" %></li>
-  <%end %>
-</ul>
+<table class="table table-bordered">
+  <tbody>
+  <% @route.trains.each do |train| %>
+    <tr>
+      <td><%= "Поезд №: #{train.number}" %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+

@@ -62,13 +62,14 @@ class RailwayStationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_railway_station
-      @railway_station = RailwayStation.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def railway_station_params
-      params.require(:railway_station).permit(:title)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_railway_station
+    @railway_station = RailwayStation.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def railway_station_params
+    params.require(:railway_station).permit(:title)
+  end
 end

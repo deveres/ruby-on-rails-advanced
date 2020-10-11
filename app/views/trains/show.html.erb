@@ -1,6 +1,14 @@
 <p id="notice"><%= notice %></p>
 <h1>Данные поезда</h1>
 <hr>
+
+
+<%= link_to 'Редактировать', edit_train_path(@train) %> |
+<%= link_to 'Назад', trains_path %>
+
+<br>
+<br>
+
 <div class="form-horizontal">
   <div class="form-group">
     <div class="col-sm-4">
@@ -20,43 +28,92 @@
       <% if @train.route.present? %>
 
         <span class="text-success"><%= @train.route.name %></span>
-      <%else %>
+      <% else %>
         <span class="text-danger">Маршрут не назначен</span>
-      <%end %>
+      <% end %>
+
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-4">
+      <label for="brand" class="required pull-right">Порядок вагонов:</label>
+    </div>
+    <div class="col-sm-8">
+      <% if @train.cars_order %>
+
+        <span class="text-success">Вагоны с хвоста поезда</span>
+      <% else %>
+        <span class="text-success">Вагоны с головы поезда</span>
+      <% end %>
 
     </div>
 
   </div>
 
 
-  <% Car::CAR_TYPE_COLLECTION.each do |key, val| %>
+  <div class="col-sm-6">
+    <% Car::CAR_TYPE.each do |key, val| %>
 
-    <div class="form-group">
-      <div class="col-sm-4">
-        <label for="brand" class="required pull-right"><%= "#{val[:label]} вагонов:" %></label>
+      <div class="row">
+        <div class="col-sm-8">
+          <label for="brand" class="required pull-right"><%= "#{val[:label]} вагон:" %></label>
+        </div>
+        <div class="col-sm-2">
+          <%= @train.cars_total(key) %>
+        </div>
       </div>
-      <div class="col-sm-8">
-        <%= @train.cars_total(val[:type]) %>
-      </div>
-    </div>
-<% end %>
+    <% end %>
+  </div>
 
-  <% Car::CAR_TYPE_COLLECTION.each do |key, data| %>
-    <% Car::CAR_PLACES.each do |label, place_name| %>
-    <div class="form-group">
-      <div class="col-sm-4">
-        <label for="brand" class="required pull-right"><%= "#{data[:label]} #{place_name} мест:" %></label>
-      </div>
-      <div class="col-sm-8">
-        <%= @train.car_seats(data[:type], label) %>
-      </div>
-    </div>
-  <% end %>
-  <% end %>
+  <div class="col-sm-6">
+    <% Car::CAR_TYPE.each do |key, val| %>
 
+      <% @train.get_places(val[:class]).each do |label, place_name| %>
+        <div class="row">
+          <div class="col-sm-10">
+            <label for="brand" class="required pull-right"><%= "#{val[:label]} вагон - #{place_name} места:" %></label>
+          </div>
+          <div class="col-sm-2">
+
+            <%= @train.car_seats(key, label) %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 
+<hr>
+<strong>Список вагонов:</strong>
+
+<p>
+
+  <% if @train.cars.present? %>
+  <table class="table table-bordered">
+    <tbody>
+    <% @train.ordered_cars.each do |car| %>
+      <tr>
 
 
-<%= link_to 'Редактировать', edit_train_path(@train) %> |
-<%= link_to 'Назад', trains_path %>
+        <td><%= link_to "Вагон №: #{car.number} (#{car.car_type})", car_path(car) %></td>
+        <td><%= link_to "Изменить вагон", edit_car_path(car), :class => 'text-success' %></td>
+        <td><%= link_to "Удалить вагон",
+                        car_path(car),
+                        method: :delete,
+                        data: {confirm: 'Подтвредить удаление'}, :class => 'text-danger' %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  Нет вагонов
+<% end %>
+</p>
+
+<p>
+  <%= link_to "Добавить вагон", new_train_car_path(@train), class: 'btn btn-primary' %>
+</p>
+
+
