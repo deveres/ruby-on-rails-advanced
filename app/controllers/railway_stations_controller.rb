@@ -1,4 +1,5 @@
 class RailwayStationsController < ApplicationController
+  include ApplicationHelper
   before_action :set_railway_station, only: [:show, :edit, :update, :destroy, :update_params]
 
   # GET /railway_stations
@@ -57,7 +58,9 @@ class RailwayStationsController < ApplicationController
   def update_params
     @route = Route.find(params[:route_id])
     railway_station_params = {
-        position: params[:position]
+        position: params[:position],
+        departure_time: date_hash_to_datetime(params[:departure_time]),
+        arrival_time: date_hash_to_datetime(params[:arrival_time])
     }
 
     if (@railway_station.update_params(@route, railway_station_params))
