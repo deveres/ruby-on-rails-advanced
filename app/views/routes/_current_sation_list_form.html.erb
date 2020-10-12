@@ -1,11 +1,14 @@
-<%= form_with(model: [route, railway_stations_route], local: true) do |form| %>
+<%= form_tag update_params_railway_station_path(station), method: :patch do %>
 
 
   <table class="table table-bordered table-stripped">
 
     <tr>
-      <td><%= form.number_field :position, class: 'form-control' %></td>
-      <td><%= form.submit "Применить", :class => "btn btn-success btn-xs" %></td>
+      <td>
+        <%= number_field_tag :position, station.position_in(@route), class: 'form-control' %>
+        <%= hidden_field_tag :route_id, @route.id %>
+      </td>
+      <td><%= submit_tag "Применить", :class => "btn btn-success btn-xs" %></td>
     </tr>
 
 

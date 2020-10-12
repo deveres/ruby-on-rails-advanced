@@ -13,12 +13,12 @@
 
   <tbody>
 
-  <% @route.railway_stations_routes.ordered.each do |railway_stations_route| %>
+  <% @route.railway_stations.ordered.each do |station| %>
 
     <tr>
-      <td><%= railway_stations_route.railway_station.title %></td>
-      <td><%= render 'current_sation_list_form', route: @route, railway_stations_route: railway_stations_route %></td>
-      <td><%= link_to 'Удалить', route_railway_stations_route_path(@route, railway_stations_route), method: :delete, data: {confirm: 'Подтвредите удаление станции из маршрута?'}, :class => 'btn btn-xs btn-danger' %></td>
+      <td><%= station.title %></td>
+      <td><%= render 'current_sation_list_form', route: @route, station: station %></td>
+      <td><%= link_to 'Удалить', delete_from_route_path(station, @route), method: :delete, data: {confirm: 'Подтвредите удаление станции из маршрута?'}, :class => 'btn btn-xs btn-danger' %></td>
     </tr>
 
 
