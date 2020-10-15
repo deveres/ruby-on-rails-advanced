@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_11_104610) do
+ActiveRecord::Schema.define(version: 2020_10_12_125926) do
 
   create_table "cars", force: :cascade do |t|
     t.integer "top_seats"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 2020_10_11_104610) do
     t.integer "railway_station_id"
     t.integer "route_id"
     t.integer "position", default: 0
+    t.datetime "arrival_time"
+    t.datetime "departure_time"
     t.index ["railway_station_id", "route_id"], name: "station_route_unique", unique: true
   end
 

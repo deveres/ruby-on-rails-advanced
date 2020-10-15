@@ -1,17 +1,25 @@
 Rails.application.routes.draw do
   resources :trains do
     resources :cars, shallow: true
+    resources :tickets, shallow: true
   end
-  resources :railway_stations
+
+  resources :railway_stations do
+
+    patch :update_params, on: :member
+
+  end
+  delete 'delete_from_route/:id/:route_id', to: 'railway_stations#delete_from_route', as: :delete_from_route
+
 
   resources :routes do
-    resources :railway_stations_routes
+    post :add_station_to, on: :member
   end
 
 
 
 
-  resources :tickets
+  resource :search, only: [:show]
 
   get 'welcome/index'
 

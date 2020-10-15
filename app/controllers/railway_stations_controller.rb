@@ -1,5 +1,6 @@
 class RailwayStationsController < ApplicationController
-  before_action :set_railway_station, only: [:show, :edit, :update, :destroy]
+  include ApplicationHelper
+  before_action :set_railway_station, only: [:show, :edit, :update, :destroy, :update_params]
 
   # GET /railway_stations
   # GET /railway_stations.json
@@ -40,6 +41,9 @@ class RailwayStationsController < ApplicationController
   # PATCH/PUT /railway_stations/1
   # PATCH/PUT /railway_stations/1.json
   def update
+
+    #render text: params
+
     respond_to do |format|
       if @railway_station.update(railway_station_params)
         format.html { redirect_to @railway_station, notice: 'Railway station was successfully updated.' }
@@ -50,6 +54,22 @@ class RailwayStationsController < ApplicationController
       end
     end
   end
+
+  def update_params
+    @route = Route.find(params[:route_id])
+    railway_station_params = {
+        position: params[:position],
+        departure_time: date_hash_to_datetime(params[:departure_time]),
+        arrival_time: date_hash_to_datetime(params[:arrival_time])
+    }
+
+    if (@railway_station.update_params(@route, railway_station_params))
+      redirect_to @route, notice: "Данные обновлены"
+    else
+      redirect_to @route, alert: "Данные не были обновлены"
+    end
+  end
+
 
   # DELETE /railway_stations/1
   # DELETE /railway_stations/1.json
