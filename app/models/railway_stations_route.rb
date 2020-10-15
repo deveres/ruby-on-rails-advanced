@@ -7,5 +7,6 @@ class RailwayStationsRoute < ApplicationRecord
   belongs_to :route, touch: true
 
 
-  scope :ordered, -> { order(:position) }
+  default_scope { order(:position) }
+
 end

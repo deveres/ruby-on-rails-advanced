@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :trains do
     resources :cars, shallow: true
+    resources :tickets, shallow: true
   end
 
   resources :railway_stations do
@@ -16,7 +17,9 @@ Rails.application.routes.draw do
   end
 
 
-  resources :tickets
+
+
+  resource :search, only: [:show]
 
   get 'welcome/index'
 

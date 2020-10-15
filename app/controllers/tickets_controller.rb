@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  before_action :set_train, only: [:new, :create]
 
   def index
     @tickets = Ticket.all
@@ -9,7 +10,11 @@ class TicketsController < ApplicationController
   end
 
   def new
-    @ticket = Ticket.new
+    @ticket = Ticket.new({
+                             start_station_id: params[:start_station_id],
+                             end_station_id: params[:end_station_id]
+                         })
+
   end
 
   def create
@@ -42,6 +47,10 @@ class TicketsController < ApplicationController
 
   def set_ticket
     @ticket = Ticket.find(params[:id])
+  end
+
+  def set_train
+    @train = Train.find(params[:train_id])
   end
 
   # Only allow a list of trusted parameters through.
