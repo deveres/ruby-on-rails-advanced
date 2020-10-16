@@ -1,0 +1,32 @@
+<%= render "common/admin_page_header",
+           with_button: false,
+           page_title: 'Список билетов',
+           button_title: nil,
+           button_url: nil
+%>
+
+
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+
+    <th scope="col">ID</th>
+    <th scope="col">Дата продажи</th>
+    <th scope="col">Номер поезда</th>
+    <th scope="col">От станции</th>
+    <th scope="col">До станции</th>
+    <th scope="col">ФИО покупателя</th>
+    <th colspan="3" class="w-25"></th>
+
+  </tr>
+  </thead>
+
+
+  <tbody>
+
+  <%= render @tickets %>
+
+  </tbody>
+</table>
+

@@ -1,0 +1,11 @@
+<%= render "common/admin_page_header",
+           with_button: false,
+           page_title: 'Изменить поезд',
+           button_title: nil,
+           button_url: nil
+%>
+
+<%= render 'form', train: @train %>
+
+<%= link_to 'Показать', [:admin, @train] %> |
+<%= link_to 'Назад', admin_trains_path %>

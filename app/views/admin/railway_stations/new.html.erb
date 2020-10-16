@@ -1,0 +1,13 @@
+<%= render "common/admin_page_header",
+           with_button: false,
+           page_title: 'Добавить станцию',
+           button_title: nil,
+           button_url: nil
+%>
+
+
+
+
+<%= render 'form', railway_station: @railway_station %>
+
+<%= link_to 'Назад', admin_railway_stations_path %>

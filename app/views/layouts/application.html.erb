@@ -32,11 +32,15 @@
     <a class="navbar-brand" href="#">Myapplication</a>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
-        <li><%= link_to "Станции", railway_stations_path %></li>
-        <li><%= link_to "Маршруты", routes_path %></li>
-        <li><%= link_to "Поезда", trains_path %></li>
+        <li><%= link_to "На главную", root_path %></li>
         <li><%= link_to "Поиск", search_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to "Мои билеты", tickets_path %></li>
+        <% end %>
+
+
       </ul>
+      <%= render "common/right_nav" %>
     </div>
   </div>
 </div>
@@ -45,6 +49,9 @@
   <div class="row">
     <div class="col-lg-12">
       <%= bootstrap_flash %>
+
+
+
       <%= yield %>
     </div>
 
@@ -52,11 +59,8 @@
 </main> <!-- /container -->
 
 
-<footer class="container footer-block">
-  <div class="container">
-    <span class="text-muted">&copy; Company 2020</span>
-  </div>
-</footer>
+<%= render "common/footer" %>
+
 
 </body>
 </html>

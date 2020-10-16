@@ -1,0 +1,13 @@
+<%= render "common/admin_page_header",
+           with_button: false,
+           page_title: 'Редактировать билет',
+           button_title: nil,
+           button_url: nil
+%>
+
+
+
+<%= render 'form', ticket: @ticket, train: @ticket.train %>
+
+<%= link_to 'Показать', [:admin, @ticket] %> |
+<%= link_to 'Назад', admin_tickets_path %>

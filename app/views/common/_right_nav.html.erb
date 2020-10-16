@@ -1,0 +1,19 @@
+<ul class="nav nav-pills pull-right">
+  <li class="presentation">
+
+    <% if user_signed_in? %>
+      <% if current_user.admin? %>
+
+      <% end %>
+
+      <%= link_to "Выйти", destroy_user_session_path, method: :delete %>
+      <span>Аккаунт: <%= current_user.email %>
+        <% if current_user.admin? %>
+
+        <%= link_to "(Админка)", admin_path %>
+      <% end %></span>
+    <% else %>
+      <%= link_to "Войти", new_user_session_path %>
+    <% end %>
+  </li>
+</ul>
