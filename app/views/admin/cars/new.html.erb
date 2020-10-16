@@ -1,0 +1,14 @@
+<%= render "common/admin_page_header",
+           with_button: false,
+           page_title: 'Новый вагон для поезда',
+           button_title: nil,
+           button_url: nil
+%>
+
+
+
+<%= render 'form', train: @train, car: @car %>
+
+
+<%= link_to 'Назад', admin_train_path(@train) %>
+

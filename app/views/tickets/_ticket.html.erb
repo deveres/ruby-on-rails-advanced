@@ -2,11 +2,24 @@
   <td><%= ticket.id %></td>
   <td><%= ticket.created_at %></td>
   <td><%= ticket.train.number if ticket.train.present? %></td>
-  <td><%= ticket.start_station.title if ticket.start_station.present? %></td>
-  <td><%= ticket.end_station.title if ticket.end_station.present? %></td>
+  <td>
+    <% if ticket.start_station.present? %>
+      <%= ticket.start_station.title %>
+      <br><span class="text-muted">(<%= l(ticket.start_station.departure_time(ticket.train.route)) %>)</span>
+    <% else %>
+      -
+    <% end %>
+  </td>
+  <td>
+    <% if ticket.end_station.present? %>
+      <%= ticket.end_station.title %>
+      <br><span class="text-muted">(<%= l(ticket.end_station.departure_time(ticket.train.route)) %>)</span>
+    <% else %>
+      -
+    <% end %>
+  </td>
   <td><%= "#{ticket.last_name} #{ticket.first_name} #{ticket.middle_name}" %></td>
 
   <td><%= link_to 'Просмотр', ticket, :class => 'btn btn-xs btn-info' %></td>
-  <td><%= link_to 'Редактировать', edit_ticket_path(ticket), :class => 'btn btn-xs btn-success' %></td>
   <td><%= link_to 'Удалить', ticket, method: :delete, data: {confirm: 'Подтвредите удаление билета?'}, :class => 'btn btn-xs btn-danger' %></td>
 </tr>

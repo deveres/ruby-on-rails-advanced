@@ -1,0 +1,10 @@
+<tr>
+  <td><%= car.id %></td>
+  <td><%= Car::CAR_TYPE[car.type] %></td>
+  <td><%= car.top_seats %></td>
+  <td><%= car.bottom_seats %></td>
+  <td><%= car.train.number if car.train.present? %></td>
+  <td><%= link_to 'Просмотр', [:admin, car], :class => 'btn btn-xs btn-info' %></td>
+  <td><%= link_to 'Редактировать', edit_admin_car_path(car), :class => 'btn btn-xs btn-success' %></td>
+  <td><%= link_to 'Удалить', [:admin, car], method: :delete, data: {confirm: 'Подтвредите удаление вагона?'}, :class => 'btn btn-xs btn-danger' %></td>
+</tr>

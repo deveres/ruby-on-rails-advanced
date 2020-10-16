@@ -26,7 +26,7 @@ class Route < ApplicationRecord
   private
 
   def set_name
-    self.name = "#{railway_stations.first.title} - #{railway_stations.last.title}" if railway_stations?
+    self.name ||= "#{railway_stations.first.title} - #{railway_stations.last.title}" if railway_stations?
   end
 
   def railway_stations?

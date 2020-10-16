@@ -1,0 +1,11 @@
+<%= render "common/admin_page_header",
+           with_button: false,
+           page_title: 'Новый маршрут',
+           button_title: nil,
+           button_url: nil
+%>
+
+
+<%= render 'form', route: @route %>
+
+<%= link_to 'Назад', admin_routes_path %>

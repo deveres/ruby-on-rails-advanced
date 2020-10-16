@@ -1,0 +1,73 @@
+<%= render "common/admin_page_header",
+           with_button: false,
+           page_title: 'Данные билета',
+           button_title: nil,
+           button_url: nil
+%>
+<div class="form-horizontal">
+
+
+  <div class="form-group">
+    <div class="col-sm-3">
+      <label for="brand" class="required pull-right">ФИО пассажира</label>
+    </div>
+    <div class="col-sm-9">
+      <%= "#{@ticket.last_name} #{@ticket.first_name} #{@ticket.middle_name}" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-3">
+      <label for="brand" class="required pull-right">Билет купил</label>
+    </div>
+    <div class="col-sm-9">
+      <%= "#{@ticket.user.email}" %>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <div class="col-sm-3">
+      <label for="brand" class="required pull-right">Прикреплен к поезду</label>
+    </div>
+    <div class="col-sm-9">
+      <%= @ticket.train.number if @ticket.train.present? %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-3">
+      <label for="brand" class="required pull-right">От станции</label>
+    </div>
+    <div class="col-sm-9">
+      <% if @ticket.start_station.present? %>
+        <%= @ticket.start_station.title %>
+        (<%= l(@ticket.start_station.departure_time(@ticket.train.route)) %>)
+      <% else %>
+        не установлено
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-3">
+      <label for="brand" class="required pull-right">До станции</label>
+    </div>
+    <div class="col-sm-9">
+      <% if @ticket.end_station.present? %>
+        <%= @ticket.end_station.title %>
+        (<%= l(@ticket.end_station.departure_time(@ticket.train.route)) %>)
+      <% else %>
+        не установлено
+      <% end %>
+    </div>
+  </div>
+
+</div>
+
+<br>
+<br>
+
+
+<%= link_to 'Редактировать', edit_admin_ticket_path(@ticket) %> |
+<%= link_to 'Назад', admin_tickets_path %>

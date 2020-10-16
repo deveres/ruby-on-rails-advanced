@@ -1,0 +1,7 @@
+<tr>
+  <td><%= train.number %></td>
+  <td><%= train.route.nil? ? "-" : train.route.name %></td>
+  <td><%= link_to 'Показать', [:admin, train], :class => 'btn btn-xs btn-info' %></td>
+  <td><%= link_to 'Редактировать', edit_admin_train_path(train), :class => 'btn btn-xs btn-success' %></td>
+  <td><%= link_to 'Удалить', [:admin, train], method: :delete, data: {confirm: 'Вы уверены?'}, :class => 'btn btn-xs btn-danger' %></td>
+</tr>

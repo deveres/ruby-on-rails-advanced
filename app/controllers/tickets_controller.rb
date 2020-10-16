@@ -1,12 +1,15 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+
+  before_action :set_ticket, only: [:show, :destroy]
   before_action :set_train, only: [:new, :create]
 
   def index
-    @tickets = Ticket.all
+    @tickets = current_user.tickets
   end
 
   def show
+    redirect_to tickets_path, alert: "Вы не можете просмотреть детали данного билета" unless current_user.owner_of?(@ticket)
   end
 
   def new
@@ -18,7 +21,7 @@ class TicketsController < ApplicationController
   end
 
   def create
-    @ticket = Ticket.new(ticket_params)
+    @ticket = current_user.tickets.new(ticket_params)
 
     if @ticket.save
       redirect_to @ticket
@@ -27,20 +30,14 @@ class TicketsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def update
-    if @ticket.update(ticket_params)
-      redirect_to @ticket
-    else
-      render :edit
-    end
-  end
 
   def destroy
-    @ticket.destroy
-    redirect_to tickets_path
+    if user_signed_in? && current_user.owner_of?(@ticket)
+      @ticket.destroy
+      redirect_to tickets_path, notice: 'Билет удален'
+    else
+      redirect_to tickets_path, alert: "Вы не можете удалить данный билет"
+    end
   end
 
   private

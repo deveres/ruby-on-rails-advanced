@@ -1,0 +1,29 @@
+<%= render "common/admin_page_header",
+           with_button: true,
+           page_title: 'Список поездов',
+           button_title: 'Добавить поезд',
+           button_url: new_admin_train_path
+%>
+
+
+
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+
+    <th scope="col">Номер поезда</th>
+    <th scope="col">Маршрут</th>
+    <th colspan="3" class="w-25"></th>
+
+  </tr>
+  </thead>
+
+
+  <tbody>
+
+  <%= render @trains %>
+
+  </tbody>
+</table>
+
