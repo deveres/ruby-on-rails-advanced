@@ -26,10 +26,10 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
-gem 'twitter-bootstrap-rails'
-
-
 gem 'devise'
+
+gem 'therubyracer'
+gem 'twitter-bootstrap-rails'
 
 gem 'sdoc', group: :doc
 

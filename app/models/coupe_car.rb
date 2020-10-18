@@ -3,10 +3,9 @@ class CoupeCar < Car
   validates :bottom_seats, presence: true, numericality: { only_integer: true }
 
 
-
    PLACES = {
-     bottom: 'Нижние',
-     top: 'Верхние'
+     bottom: I18n.t('cars.bottom_places'),
+     top: I18n.t('cars.top_places')
    }.freeze
 
 end

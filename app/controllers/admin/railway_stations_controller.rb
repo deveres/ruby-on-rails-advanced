@@ -32,7 +32,7 @@ class Admin::RailwayStationsController < Admin::BaseController
 
     respond_to do |format|
       if @railway_station.save
-        format.html { redirect_to [:admin, @railway_station], notice: 'Railway station was successfully created.' }
+        format.html { redirect_to [:admin, @railway_station], notice: I18n.t('notices.railway_station_created') }
         format.json { render :show, status: :created, location: @railway_station }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class Admin::RailwayStationsController < Admin::BaseController
 
     respond_to do |format|
       if @railway_station.update(railway_station_params)
-        format.html { redirect_to [:admin, @railway_station], notice: 'Railway station was successfully updated.' }
+        format.html { redirect_to [:admin, @railway_station], notice: I18n.t('notices.railway_station_updated') }
         format.json { render :show, status: :ok, location: @railway_station }
       else
         format.html { render :edit }
@@ -67,9 +67,9 @@ class Admin::RailwayStationsController < Admin::BaseController
     }
 
     if (@railway_station.update_params(@route, railway_station_params))
-      redirect_to [:admin, @route], notice: "Данные обновлены"
+      redirect_to [:admin, @route], notice: I18n.t('notices.data_updated')
     else
-      redirect_to [:admin, @route], alert: "Данные не были обновлены"
+      redirect_to [:admin, @route], alert: I18n.t('alerts.data_not_updated')
     end
   end
 
@@ -79,7 +79,7 @@ class Admin::RailwayStationsController < Admin::BaseController
   def destroy
     @railway_station.destroy
     respond_to do |format|
-      format.html { redirect_to admin_railway_stations_path, notice: 'Станция успешно удалена' }
+      format.html { redirect_to admin_railway_stations_path, notice: I18n.t('notices.railway_station_deleted') }
       format.json { head :no_content }
     end
   end
@@ -89,7 +89,7 @@ class Admin::RailwayStationsController < Admin::BaseController
     @route = Route.find(params[:route_id])
     @railway_station.delete_from_route(@route)
 
-    redirect_to [:admin, @route], notice: 'Станция успешно удалена из маршрута'
+    redirect_to [:admin, @route], notice: I18n.t('notices.railway_station_deleted_from_route')
 
   end
 

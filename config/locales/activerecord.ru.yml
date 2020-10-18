@@ -1,0 +1,53 @@
+ru:
+  activerecord:
+    models:
+      railway_station: 'Станция'
+      train: 'Поезд'
+    attributes:
+      railway_station:
+        title: 'Название'
+      train:
+        number: 'Номер'
+        route_id: 'Маршрут'
+        cars_order: 'Порядок вагонов (Вагоны: 0 - с головы поезда / 1 - с хвоста поезда)'
+      ticket:
+        last_name: 'Фамилия'
+        first_name: 'Имя'
+        middle_name: 'Отчество'
+        start_station_id: 'От станции'
+        end_station_id: 'До станции'
+        train_id: 'Поезд'
+      route:
+        name: 'Название маршрута'
+      railway_stations_route:
+        railway_station_id: 'Станция'
+      car:
+        type: 'Тип вагона'
+        top_seats: 'Верхние места'
+        bottom_seats: 'Нижние (сидячие) места'
+        side_top_seats: 'Верхние боковые места'
+        side_bottom_seats: 'Нижние боковые места'
+    errors:
+      models:
+        railway_station:
+          attributes:
+            title:
+              taken: '- такая станция уже существует'
+        railway_stations_route:
+          attributes:
+            railway_station_id:
+              taken: '- такая станция уже есть в маршруте'
+        route:
+          attributes:
+            name:
+              taken: '- такой маршрут уже существует'
+        train:
+          attributes:
+            number:
+              taken: '- такой поезд уже существует'
+              invalid: '- не правильный формат номера поезда'
+
+      messages:
+        not_a_number: 'должно быть числовое значение'
+        blank: 'не может быть пустым'
+        too_short: 'должно иметь не меньше %{count} символов'

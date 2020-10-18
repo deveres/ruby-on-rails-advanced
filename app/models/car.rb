@@ -17,10 +17,10 @@ class Car < ApplicationRecord
   scope :ordered_reverse, -> { order("number DESC") }
 
   CAR_TYPE = {
-      EconomyCar: {label: 'Плацкартный', class: EconomyCar},
-      CoupeCar: {label: 'Купейный', class: CoupeCar},
-      PremiumCar: {label: 'Люксовый', class: PremiumCar},
-      SittingCar: {label: 'Сидячий', class: SittingCar}
+      EconomyCar: {label: I18n.t('cars.economy'), class: EconomyCar},
+      CoupeCar: {label: I18n.t('cars.coupe'), class: CoupeCar},
+      PremiumCar: {label: I18n.t('cars.premium'), class: PremiumCar},
+      SittingCar: {label: I18n.t('cars.sitting'), class: SittingCar}
   }.freeze
 
 

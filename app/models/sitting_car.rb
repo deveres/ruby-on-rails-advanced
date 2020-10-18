@@ -3,7 +3,8 @@ class SittingCar < Car
 
 
   PLACES = {
-      bottom: 'Сидячие'
+      bottom: I18n.t('cars.sitting_places')
   }.freeze
 
 end
+

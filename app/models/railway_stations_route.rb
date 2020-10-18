@@ -1,6 +1,6 @@
 class RailwayStationsRoute < ApplicationRecord
 
-  validates :railway_station_id, uniqueness: {scope: :route_id, message: "Такая станция уже есть в маршруте"}
+  validates :railway_station_id, uniqueness: {scope: :route_id}
   # validates :position, uniqueness: {scope: :route_id, message: "Уже есть станция с таким порядковым номером в данном маршщруте"}
 
   belongs_to :railway_station, touch: true

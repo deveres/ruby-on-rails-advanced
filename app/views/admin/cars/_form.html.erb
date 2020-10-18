@@ -35,7 +35,7 @@
 
 
   <div class="actions">
-    <%= link_to "Назад", [:admin, train], class: 'btn btn-default' %>
-    <%= form.submit "#{car.new_record? ? 'Добавить' : 'Изменить'}", :class => "btn btn-success" %>
+    <%= link_to t('common.back'), [:admin, train], class: 'btn btn-default' %>
+    <%= form.submit t('.submit', action: car.new_record? ? t('common.create') : t('common.edit')), :class => "btn btn-success" %>
   </div>
 <% end %>

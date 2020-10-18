@@ -16,7 +16,7 @@ class Admin::CarsController < Admin::BaseController
 
 
     if @car.save
-      redirect_to [:admin, @train], notice: 'Вагон добавлен'
+      redirect_to [:admin, @train], notice: I18n.t('notices.car_added')
     else
       render 'new'
     end
@@ -37,7 +37,7 @@ class Admin::CarsController < Admin::BaseController
   def destroy
     train = @car.train
     @car.destroy
-    redirect_to [:admin, train], notice: 'Вагон удален'
+    redirect_to [:admin, train], notice: I18n.t('notices.car_deleted')
   end
 
   private

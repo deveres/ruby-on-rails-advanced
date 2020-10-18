@@ -1,6 +1,6 @@
 <%= render "common/admin_page_header",
            with_button: false,
-           page_title: 'Данные поезда',
+           page_title: t('.title'),
            button_title: nil,
            button_url: nil
 %>
@@ -9,8 +9,8 @@
 
 
 
-<%= link_to 'Редактировать', edit_admin_train_path(@train) %> |
-<%= link_to 'Назад', admin_trains_path %>
+<%= link_to t('common.edit'), edit_admin_train_path(@train) %> |
+<%= link_to t('common.back'), admin_trains_path %>
 
 <br>
 <br>
@@ -18,7 +18,7 @@
 <div class="form-horizontal">
   <div class="form-group">
     <div class="col-sm-4">
-      <label for="brand" class="required pull-right">Номер:</label>
+      <label for="brand" class="required pull-right"><%= t('.number') %></label>
     </div>
     <div class="col-sm-8">
       <%= @train.number %>
@@ -28,14 +28,14 @@
 
   <div class="form-group">
     <div class="col-sm-4">
-      <label for="brand" class="required pull-right">Следует по маршруту:</label>
+      <label for="brand" class="required pull-right"><%= t('.route') %></label>
     </div>
     <div class="col-sm-8">
       <% if @train.route.present? %>
 
         <span class="text-success"><%= @train.route.name %></span>
       <% else %>
-        <span class="text-danger">Маршрут не назначен</span>
+        <span class="text-danger"><%= t('.no_route') %></span>
       <% end %>
 
     </div>
@@ -44,14 +44,14 @@
 
   <div class="form-group">
     <div class="col-sm-4">
-      <label for="brand" class="required pull-right">Порядок вагонов:</label>
+      <label for="brand" class="required pull-right"><%= t('.cars_order') %></label>
     </div>
     <div class="col-sm-8">
       <% if @train.cars_order %>
 
-        <span class="text-success">Вагоны с хвоста поезда</span>
+        <span class="text-success"><%= t('.from_end') %></span>
       <% else %>
-        <span class="text-success">Вагоны с головы поезда</span>
+        <span class="text-success"><%= t('.from_begin') %></span>
       <% end %>
 
     </div>
@@ -64,7 +64,7 @@
 
       <div class="row">
         <div class="col-sm-8">
-          <label for="brand" class="required pull-right"><%= "#{val[:label]} вагон:" %></label>
+          <label for="brand" class="required pull-right"><%= t('.car_type', type: val[:label]) %></label>
         </div>
         <div class="col-sm-2">
           <%= @train.cars_total(key) %>
@@ -79,7 +79,7 @@
       <% @train.get_places(val[:class]).each do |label, place_name| %>
         <div class="row">
           <div class="col-sm-10">
-            <label for="brand" class="required pull-right"><%= "#{val[:label]} вагон - #{place_name} места:" %></label>
+            <label for="brand" class="required pull-right"><%= t('.car_type_places', type: val[:label], places: place_name) %></label>
           </div>
           <div class="col-sm-2">
 
@@ -92,7 +92,7 @@
 </div>
 
 <hr>
-<strong>Список вагонов:</strong>
+<strong><%= t('.car_list') %></strong>
 
 <p>
 
@@ -103,23 +103,23 @@
       <tr>
 
 
-        <td><%= link_to "Вагон №: #{car.number} (#{car.car_type})", admin_car_path(car) %></td>
-        <td><%= link_to "Изменить вагон", edit_admin_car_path(car), :class => 'text-success' %></td>
-        <td><%= link_to "Удалить вагон",
+        <td><%= link_to t('.car_label', car_number: car.number, car_type: car.car_type), admin_car_path(car) %></td>
+        <td><%= link_to t('.edit_car'), edit_admin_car_path(car), :class => 'text-success' %></td>
+        <td><%= link_to t('.delete_car'),
                         admin_car_path(car),
                         method: :delete,
-                        data: {confirm: 'Подтвредить удаление'}, :class => 'text-danger' %></td>
+                        data: {confirm: t('common.confirm_delete')}, :class => 'text-danger' %></td>
       </tr>
     <% end %>
     </tbody>
   </table>
 <% else %>
-  Нет вагонов
+  <%= t('.no_cars') %>
 <% end %>
 </p>
 
 <p>
-  <%= link_to "Добавить вагон", new_admin_train_car_path(@train), class: 'btn btn-primary' %>
+  <%= link_to t('.add_car'), new_admin_train_car_path(@train), class: 'btn btn-primary' %>
 </p>
 
 

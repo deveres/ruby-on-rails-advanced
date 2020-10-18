@@ -32,11 +32,11 @@
     <a class="navbar-brand" href="#">Myapplication</a>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
-        <li><%= link_to "На главную", root_path %></li>
-        <li><%= link_to "Станции", admin_railway_stations_path %></li>
-        <li><%= link_to "Маршруты", admin_routes_path %></li>
-        <li><%= link_to "Поезда", admin_trains_path %></li>
-        <li><%= link_to "Билеты", admin_tickets_path %></li>
+        <li><%= link_to t('.main_page'), root_path %></li>
+        <li><%= link_to t('.railway_stations'), admin_railway_stations_path %></li>
+        <li><%= link_to t('.routes'), admin_routes_path %></li>
+        <li><%= link_to t('.trains'), admin_trains_path %></li>
+        <li><%= link_to t('.tickets'), admin_tickets_path %></li>
 
       </ul>
       <%= render "common/right_nav" %>

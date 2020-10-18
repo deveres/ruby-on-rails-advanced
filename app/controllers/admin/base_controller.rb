@@ -7,6 +7,6 @@ class Admin::BaseController < ApplicationController
   protected
 
   def check_admin
-    redirect_to root_path, "У вас нет прав на просмотра данной страницы" unless current_user.admin?
+    redirect_to root_path, I18n.t('alerts.page_access_denied') unless current_user.admin?
   end
 end

@@ -1,19 +1,16 @@
 <%= render "common/admin_page_header",
            with_button: true,
-           page_title: 'Список поездов',
-           button_title: 'Добавить поезд',
+           page_title: t('.title'),
+           button_title: t('.add'),
            button_url: new_admin_train_path
 %>
-
-
-
 
 <table class="table table-hover">
   <thead>
   <tr>
 
-    <th scope="col">Номер поезда</th>
-    <th scope="col">Маршрут</th>
+    <th scope="col"><%= t('.number') %></th>
+    <th scope="col"><%= t('.route') %></th>
     <th colspan="3" class="w-25"></th>
 
   </tr>

@@ -1,6 +1,6 @@
 <div class="form-group">
   <div class="col-sm-3">
-    <label for="brand" class="required pull-right">Количество верхних мест</label>
+    <label for="brand" class="required pull-right"><%= t('.top_places') %></label>
   </div>
   <div class="col-sm-9">
     <%= @car.top_seats %>
@@ -9,7 +9,7 @@
 
 <div class="form-group">
   <div class="col-sm-3">
-    <label for="brand" class="required pull-right">Количество нижних мест</label>
+    <label for="brand" class="required pull-right"><%= t('.bottom_places') %></label>
   </div>
   <div class="col-sm-9">
     <%= @car.bottom_seats %>
@@ -18,7 +18,7 @@
 
 <div class="form-group">
   <div class="col-sm-3">
-    <label for="brand" class="required pull-right">Количество боковых верхних мест</label>
+    <label for="brand" class="required pull-right"><%= t('.side_top_places') %></label>
   </div>
   <div class="col-sm-9">
     <%= @car.side_top_seats %>
@@ -27,7 +27,7 @@
 
 <div class="form-group">
   <div class="col-sm-3">
-    <label for="brand" class="required pull-right">Количество боковых нижних мест</label>
+    <label for="brand" class="required pull-right"><%= t('.side_bottom_places') %></label>
   </div>
   <div class="col-sm-9">
     <%= @car.side_bottom_seats %>

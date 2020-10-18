@@ -1,7 +1,7 @@
 <%= render "common/admin_page_header",
            with_button: true,
-           page_title: 'Список станций',
-           button_title: 'Добавить станцию',
+           page_title: t('.title'),
+           button_title: t('.add_station'),
            button_url: new_admin_railway_station_path
 %>
 
@@ -10,16 +10,13 @@
   <thead>
   <tr>
 
-    <th scope="col">Название</th>
+    <th scope="col"><%= t('.name') %></th>
     <th colspan="3" class="w-25"></th>
 
   </tr>
   </thead>
   <tbody>
-
-
   <%= render @railway_stations %>
-
   </tbody>
 </table>
 

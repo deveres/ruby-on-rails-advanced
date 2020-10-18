@@ -1,6 +1,6 @@
 <%= render "common/admin_page_header",
            with_button: false,
-           page_title: 'Данные о станции',
+           page_title: t('.title'),
            button_title: nil,
            button_url: nil
 %>
@@ -10,7 +10,7 @@
 
 
 <p>
-  <strong>Название:</strong>
+  <strong><%= t('.name') %></strong>
   <%= @railway_station.title %>
 </p>
 <br>
@@ -18,11 +18,11 @@
 
 <% if @railway_station.routes.empty? %>
   <div class="alert alert-info" role="alert">
-    Станция не входит ни в один маршрут
+    <%= t('.not_in_any_route') %>
   </div>
 
 <% else %>
-  <h5 class="text-success">Станция входит в следующие маршруты:</h5>
+  <h5 class="text-success"><%= t('.in_routes') %></h5>
   <ul class="list-style">
     <% @railway_station.routes.each do |route| %>
       <li><%= route.name %></li>
@@ -30,5 +30,5 @@
   </ul>
 <% end %>
 
-<%= link_to 'Редактировать', edit_admin_railway_station_path(@railway_station) %> |
-<%= link_to 'Назад', admin_railway_stations_path %>
+<%= link_to t('common.edit'), edit_admin_railway_station_path(@railway_station) %> |
+<%= link_to t('common.back'), admin_railway_stations_path %>
