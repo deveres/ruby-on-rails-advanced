@@ -1,6 +1,6 @@
 <%= render "common/admin_page_header",
            with_button: false,
-           page_title: 'Данные билета',
+           page_title: t('.title'),
            button_title: nil,
            button_url: nil
 %>
@@ -9,7 +9,7 @@
 
   <div class="form-group">
     <div class="col-sm-3">
-      <label for="brand" class="required pull-right">ФИО пассажира</label>
+      <label for="brand" class="required pull-right"><%= t('.pessenger') %></label>
     </div>
     <div class="col-sm-9">
       <%= "#{@ticket.last_name} #{@ticket.first_name} #{@ticket.middle_name}" %>
@@ -18,7 +18,7 @@
 
   <div class="form-group">
     <div class="col-sm-3">
-      <label for="brand" class="required pull-right">Билет купил</label>
+      <label for="brand" class="required pull-right"><%= t('.buyer') %></label>
     </div>
     <div class="col-sm-9">
       <%= "#{@ticket.user.email}" %>
@@ -28,7 +28,7 @@
 
   <div class="form-group">
     <div class="col-sm-3">
-      <label for="brand" class="required pull-right">Прикреплен к поезду</label>
+      <label for="brand" class="required pull-right"><%= t('.train_num') %></label>
     </div>
     <div class="col-sm-9">
       <%= @ticket.train.number if @ticket.train.present? %>
@@ -37,28 +37,29 @@
 
   <div class="form-group">
     <div class="col-sm-3">
-      <label for="brand" class="required pull-right">От станции</label>
+      <label for="brand" class="required pull-right"><%= t('.from_station') %></label>
     </div>
     <div class="col-sm-9">
       <% if @ticket.start_station.present? %>
         <%= @ticket.start_station.title %>
         (<%= l(@ticket.start_station.departure_time(@ticket.train.route)) %>)
       <% else %>
-        не установлено
+        <%= t('.not_set') %>
+
       <% end %>
     </div>
   </div>
 
   <div class="form-group">
     <div class="col-sm-3">
-      <label for="brand" class="required pull-right">До станции</label>
+      <label for="brand" class="required pull-right"><%= t('.to_station') %></label>
     </div>
     <div class="col-sm-9">
       <% if @ticket.end_station.present? %>
         <%= @ticket.end_station.title %>
         (<%= l(@ticket.end_station.departure_time(@ticket.train.route)) %>)
       <% else %>
-        не установлено
+        <%= t('.not_set') %>
       <% end %>
     </div>
   </div>
@@ -69,5 +70,5 @@
 <br>
 
 
-<%= link_to 'Редактировать', edit_admin_ticket_path(@ticket) %> |
-<%= link_to 'Назад', admin_tickets_path %>
+<%= link_to t('common.edit'), edit_admin_ticket_path(@ticket) %> |
+<%= link_to t('common.back'), admin_tickets_path %>

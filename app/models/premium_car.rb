@@ -3,7 +3,7 @@ class PremiumCar < Car
 
 
   PLACES = {
-      bottom: 'Нижние'
+      bottom: I18n.t('cars.bottom_places')
   }.freeze
 
 end

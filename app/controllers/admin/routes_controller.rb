@@ -16,7 +16,7 @@ class Admin::RoutesController < Admin::BaseController
     @route = Route.new(route_params)
 
     if @route.save
-      redirect_to [:admin, @route], notice: 'Маршрут создан'
+      redirect_to [:admin, @route], notice: I18n.t('notices.route_created')
     else
       render :new
     end
@@ -27,7 +27,7 @@ class Admin::RoutesController < Admin::BaseController
 
   def update
     if @route.update(route_params)
-      redirect_to [:admin, @route], notice: 'Маршрут изменен'
+      redirect_to [:admin, @route], notice: I18n.t('notices.route_updated')
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class Admin::RoutesController < Admin::BaseController
 
   def destroy
     @route.destroy
-    redirect_to admin_routes_path, notice: 'Маршрут удален'
+    redirect_to admin_routes_path, notice: I18n.t('notices.route_deleted')
   end
 
 
@@ -49,7 +49,7 @@ class Admin::RoutesController < Admin::BaseController
     @railway_stations_route.route = @route
 
     if (@railway_stations_route.save)
-      redirect_to [:admin, @route], notice: "Станция успешно добавлена в маршрут"
+      redirect_to [:admin, @route], notice: I18n.t('notices.railway_station_added_to_route')
     else
       redirect_to [:admin, @route], alert: @railway_stations_route.errors.full_messages.first
     end

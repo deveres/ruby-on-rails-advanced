@@ -20,6 +20,6 @@
   </td>
   <td><%= "#{ticket.last_name} #{ticket.first_name} #{ticket.middle_name}" %></td>
 
-  <td><%= link_to 'Просмотр', ticket, :class => 'btn btn-xs btn-info' %></td>
-  <td><%= link_to 'Удалить', ticket, method: :delete, data: {confirm: 'Подтвредите удаление билета?'}, :class => 'btn btn-xs btn-danger' %></td>
+  <td><%= link_to t('common.view'), ticket, :class => 'btn btn-xs btn-info' %></td>
+  <td><%= link_to t('common.delete'), ticket, method: :delete, data: {confirm: t('common.confirm_delete')}, :class => 'btn btn-xs btn-danger' %></td>
 </tr>

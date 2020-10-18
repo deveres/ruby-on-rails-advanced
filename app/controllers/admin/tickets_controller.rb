@@ -15,7 +15,7 @@ class Admin::TicketsController < Admin::BaseController
 
   def update
     if @ticket.update(ticket_params)
-      redirect_to [:admin, @ticket], notice: 'Билет обновлен'
+      redirect_to [:admin, @ticket], notice: I18n.t('notices.ticket_updated')
     else
       render :edit
     end
@@ -23,7 +23,7 @@ class Admin::TicketsController < Admin::BaseController
 
   def destroy
     @ticket.destroy
-    redirect_to admin_tickets_path, notice: 'Билет удален'
+    redirect_to admin_tickets_path, notice: I18n.t('notices.ticket_deleted')
   end
 
   private

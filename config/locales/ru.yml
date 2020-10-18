@@ -1,0 +1,292 @@
+ru:
+  alerts:
+    access_denied: 'У вас недостаточно прав для выполнения данного действия.'
+    page_access_denied: 'У вас нет прав на просмотра данной страницы'
+    data_not_updated: 'Данные не были обновлены'
+  notices:
+    data_updated: 'Данные обновлены'
+    ticket_deleted: 'Билет удален'
+    ticket_purchased: 'Билет куплен успешно'
+    railway_station_created: 'Станция успешно создана.'
+    railway_station_updated: 'Станция успешно обновлена.'
+    railway_station_deleted: 'Станция успешно удалена.'
+    railway_station_deleted_from_route: 'Станция успешно удалена из маршрута.'
+    railway_station_added_to_route: 'Станция успешно добавлена в маршрут.'
+    route_created: 'Маршрут создан'
+    route_updated: 'Маршрут обновлён'
+    route_deleted: 'Маршрут удалён'
+    train_created: 'Поезд создан'
+    train_updated: 'Поезд обновлен'
+    train_deleted: 'Поезд удален'
+    car_added: 'Вагон добавлен'
+    car_deleted: 'Вагон удален'
+    car_updated: 'Вагон обновлен'
+    ticket_updated: 'Билет обновлен'
+  common:
+    hello: 'Привет'
+    back: 'Назад'
+    to_search: 'На поиск'
+    create: 'Создать'
+    edit: 'Изменить'
+    view: 'Просмотр'
+    apply: 'Применить'
+    delete: 'Удалить'
+    confirm_delete: 'Подтвердите удаление'
+    errors:
+      error: 'Ошибка!'
+      errors: 'При заполнении формы возникли ошибки'
+    right_nav:
+      account: 'Пользователь'
+      admin: 'Админка'
+      login: 'Вход'
+      logout: 'Выход'
+    footer:
+      text: "Company 2020"
+  layouts:
+    application:
+      title: 'Myapplication advanced'
+      main_page: 'На главную'
+      search_tickets: 'Поиск'
+      my_tickets: 'Мои билеты'
+    admin:
+      main_page: 'На главную'
+      railway_stations: 'Станции'
+      routes: 'Маршруты'
+      trains: 'Поезда'
+      tickets: 'Билеты'
+  cars:
+    economy: 'Плацкартный'
+    coupe: 'Купейный'
+    premium: 'Люксовый'
+    sitting: 'Сидячий'
+    bottom_places: 'Нижние'
+    top_places: 'Верхние'
+    side_bottom_places: 'Нижние боковые'
+    side_top_places: 'Верхние боковые'
+    sitting_places: 'Сидячие'
+  searches:
+    show:
+      title: 'Поиск билетов'
+      start_station: 'Начальная станция'
+      end_station: 'Конечная станция'
+      search: 'Поиск'
+      train_number: 'Поезд #'
+      departure_time: 'Время отправления:'
+      arrival_time: 'Время прибытия:'
+      not_found: 'Не найдено'
+      buy_ticket: 'Купить билет'
+  tickets:
+    index:
+      title: 'Мои билеты'
+      id: 'ID'
+      purchase_date: 'Дата продажи'
+      train_num: 'Номер поезда'
+      from_station: 'От станции'
+      to_station: 'До станции'
+      buyer: 'ФИО покупателя'
+      pessenger: 'ФИО пассажира'
+    new:
+      title: 'Купить билет'
+    show:
+      title: 'Данные о билете'
+      pessenger: 'ФИО пассажира'
+      buyer: 'Билет купил'
+      to_train: 'Прикреплен к поезду'
+      from_station: 'От станции'
+      to_station: 'До станции'
+      not_set: 'не установлено'
+    form:
+      first_name: 'Имя'
+      last_name: 'Фамилия'
+      middle_name: 'Отчество'
+      start_station: 'Начальная станция'
+      end_station: 'Конечная станция'
+      buy: 'Купить'
+  routes:
+    should_contain: 'В маршруте должно быть минимум 2 станции'
+  admin:
+    railway_stations:
+      index:
+        title: 'Список станций'
+        add_station: 'Добавить станцию'
+        name: 'Название'
+      show:
+        title: 'Данные о станции'
+        name: 'Название:'
+        not_in_any_route: 'Станция не входит ни в один маршрут'
+        in_routes: 'Станция входит в следующие маршруты:'
+      new:
+        title: 'Добавить станцию'
+      edit:
+        title: 'Редактировать станцию'
+      form:
+        submit: '%{action} станцию'
+    routes:
+      index:
+        title: 'Список маршрутов'
+        add_route: 'Добавить маршрут'
+        name: 'Название маршрута'
+      show:
+        title: 'Данные маршрута'
+        name: 'Название маршрута:'
+      add_station_form:
+          add_to_route: 'Добавление станции в маршрут'
+          add_station: 'Добавить станцию'
+          railway_station: 'Станция'
+          position: 'Позиция в маршруте'
+      new:
+        title: 'Добавить маршрут'
+      edit:
+        title: 'Редактировать маршрут'
+      form:
+        submit: '%{action} маршрут'
+        route_stations: 'Станции маршрута'
+      no_trains:
+        text: 'На этом маршруте нет поездов'
+      no_stations:
+        text: 'На этом маршруте нет станций'
+      current_trains:
+        title: 'Поезда следующие по данному маршруту:'
+        train_num: 'Поезд №: %{number}'
+      current_stations:
+        title: 'Все станции данного маршрута'
+        name: 'Название станции'
+        params: 'Параметры'
+      current_sation_list_form:
+        position: 'Позиция'
+        arrival_time: 'Время прибытия'
+        departure_time: 'Время отправления'
+    trains:
+      index:
+        title: 'Список поездов'
+        add: 'Добавить поезд'
+        number: 'Номер поезда'
+        route: 'Маршрут'
+      new:
+        title: 'Добавить поезд'
+      show:
+        title: 'Данные поезда'
+        number: 'Номер:'
+        route: 'Следует по маршруту:'
+        no_route: 'Маршрут не назначен'
+        cars_order: 'Порядок вагонов:'
+        from_end: 'Вагоны с хвоста поезда'
+        from_begin: 'Вагоны с головы поезда'
+        car_type: '%{type} вагон:'
+        car_type_places: '%{type} вагон - %{places} места:'
+        car_list: 'Список вагонов'
+        car_label: 'Вагон №: %{car_number} (%{car_type})'
+        edit_car: 'Изменить вагон'
+        add_car: 'Добавить вагон'
+        delete_car: 'Удалить вагон'
+        no_cars: 'Нет вагонов'
+      edit:
+        title: 'Изменить поезд'
+      form:
+        submit: '%{action} поезд'
+    cars:
+      show:
+        title: 'Данные о вагоне'
+        type: 'Тип вагона'
+        attached_to_train: 'Прикреплен к поезду'
+      show_coupe_car:
+        top_places: 'Количество верхних мест'
+        bottom_places: 'Количество нижних мест'
+      show_economy_car:
+        top_places: 'Количество верхних мест'
+        bottom_places: 'Количество нижних мест'
+        side_top_places: 'Количество верхних боковых мест'
+        side_bottom_places: 'Количество нижних боковых мест'
+      show_premium_car:
+        bottom_places: 'Количество нижних мест'
+      show_sitting_car:
+        bottom_places: 'Количество сидячих мест'
+      new:
+        title: 'Новый вагон для поезда'
+      edit:
+        title: 'Редактировать вагон'
+      form:
+        submit: '%{action} вагон'
+    tickets:
+      index:
+        title: 'Список билетов'
+        id: 'ID'
+        purchase_date: 'Дата продажи'
+        train_num: 'Номер поезда'
+        from_station: 'От станции'
+        to_station: 'До станции'
+        buyer: 'ФИО покупателя'
+        pessenger: 'ФИО пассажира'
+      show:
+        title: 'Данные билета'
+        pessenger: 'ФИО пассажира'
+        buyer: 'ФИО покупателя'
+        train_num: 'Номер поезда'
+        from_station: 'От станции'
+        to_station: 'До станции'
+        not_set: 'не установлено'
+      edit:
+        title: 'Редактировать билет'
+      form:
+        save: 'Изменить'
+
+  date:
+    abbr_day_names:
+      - Вс
+      - Пн
+      - Вт
+      - Ср
+      - Чт
+      - Пт
+      - Сб
+    abbr_month_names:
+      -
+      - янв.
+      - февр.
+      - марта
+      - апр.
+      - мая
+      - июня
+      - июля
+      - авг.
+      - сент.
+      - окт.
+      - нояб.
+      - дек.
+    day_names:
+      - воскресенье
+      - понедельник
+      - вторник
+      - среда
+      - четверг
+      - пятница
+      - суббота
+    formats:
+      default: "%d.%m.%Y"
+      long: "%-d %B %Y"
+      short: "%-d %b"
+    month_names:
+      -
+      - января
+      - февраля
+      - марта
+      - апреля
+      - мая
+      - июня
+      - июля
+      - августа
+      - сентября
+      - октября
+      - ноября
+      - декабря
+    order:
+      - :day
+      - :month
+      - :year
+  time:
+    am: утра
+    formats:
+      default: "%a, %d %b %Y, %H:%M:%S %z"
+      long: "%d %B %Y, %H:%M"
+      short: "%d %b, %H:%M"
+    pm: вечера

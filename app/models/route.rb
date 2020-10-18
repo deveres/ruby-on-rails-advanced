@@ -1,6 +1,6 @@
 class Route < ApplicationRecord
   validates :name, presence: true, length: {minimum: 5},
-            uniqueness: {case_sensitive: false, message: "Такой маршрут уже существует"}
+            uniqueness: {case_sensitive: false}
 
   validate :stations_count
 
@@ -36,7 +36,7 @@ class Route < ApplicationRecord
 
   def stations_count
 
-    errors.add(:base, "Маршурт должен иметь минимум 2 станции") unless railway_stations?
+    errors.add(:base, I18n.t('routes.should_contain')) unless railway_stations?
 
   end
 

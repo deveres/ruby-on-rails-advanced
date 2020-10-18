@@ -1,9 +1,8 @@
 class Train < ApplicationRecord
   validates :number, presence: true,
-            uniqueness: {case_sensitive: false, message: "Такой поезд уже существует"},
+            uniqueness: {case_sensitive: false},
             length: {minimum: 5},
-            format: {with: /\A[a-z0-9]{3}-?[a-z0-9]{2}\z/,
-                     message: "Не правильный формат номера поезда"}
+            format: {with: /\A[a-z0-9]{3}-?[a-z0-9]{2}\z/}
 
 
   belongs_to :route

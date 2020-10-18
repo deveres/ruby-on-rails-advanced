@@ -1,6 +1,6 @@
 <%= render "common/admin_page_header",
            with_button: false,
-           page_title: 'Редактировать вагон',
+           page_title: t('.title'),
            button_title: nil,
            button_url: nil
 %>
@@ -9,4 +9,4 @@
 <%= render 'form', train: @train, car: @car %>
 
 
-<%= link_to 'Назад', admin_train_path(@train) %>
+<%= link_to t('common.back'), admin_train_path(@train) %>

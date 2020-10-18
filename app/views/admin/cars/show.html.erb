@@ -1,6 +1,6 @@
 <%= render "common/admin_page_header",
            with_button: false,
-           page_title: 'Данные о вагоне',
+           page_title: t('.title'),
            button_title: nil,
            button_url: nil
 %>
@@ -11,7 +11,7 @@
 <div class="form-horizontal">
   <div class="form-group">
     <div class="col-sm-3">
-      <label for="brand" class="required pull-right">Тип вагона</label>
+      <label for="brand" class="required pull-right"><%= t('.type') %></label>
     </div>
     <div class="col-sm-9">
       <%= @car.car_type %>
@@ -21,7 +21,7 @@
 
   <div class="form-group">
     <div class="col-sm-3">
-      <label for="brand" class="required pull-right">Прикреплен к поезду</label>
+      <label for="brand" class="required pull-right"><%= t('.attached_to_train') %></label>
     </div>
     <div class="col-sm-9">
       <% if @car.train.present? %>
@@ -40,5 +40,5 @@
 <br>
 <br>
 
-<%= link_to 'Редактировать', edit_admin_car_path(@car) %> |
-<%= link_to 'Назад', admin_train_path(@car.train) %>
+<%= link_to t('common.edit'), edit_admin_car_path(@car) %> |
+<%= link_to t('common.back'), admin_train_path(@car.train) %>

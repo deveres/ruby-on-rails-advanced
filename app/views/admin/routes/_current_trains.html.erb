@@ -1,10 +1,10 @@
-<h5 class="text-success">Поезда следующие по данному маршруту:</h5>
+<h5 class="text-success"><%= t('.title') %></h5>
 
 <table class="table table-bordered">
   <tbody>
   <% @route.trains.each do |train| %>
     <tr>
-      <td><%= "Поезд №: #{train.number}" %></td>
+      <td><%= t('.train_num', number: train.number) %></td>
     </tr>
   <% end %>
   </tbody>

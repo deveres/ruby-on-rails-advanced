@@ -1,6 +1,6 @@
 class RailwayStation < ApplicationRecord
   validates :title, presence: true, length: {minimum: 5},
-            uniqueness: {case_sensitive: false, message: "Такая станция уже существует"}
+            uniqueness: {case_sensitive: false}
 
   has_many :trains, inverse_of: 'current_station'
 

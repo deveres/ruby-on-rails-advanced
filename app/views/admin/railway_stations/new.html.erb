@@ -1,13 +1,10 @@
 <%= render "common/admin_page_header",
            with_button: false,
-           page_title: 'Добавить станцию',
+           page_title: t('.title'),
            button_title: nil,
            button_url: nil
 %>
 
-
-
-
 <%= render 'form', railway_station: @railway_station %>
 
-<%= link_to 'Назад', admin_railway_stations_path %>
+<%= link_to t('common.back'), admin_railway_stations_path %>

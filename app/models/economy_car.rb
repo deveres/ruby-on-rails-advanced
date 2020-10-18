@@ -7,10 +7,11 @@ class EconomyCar < Car
 
 
   PLACES = {
-      bottom: 'Нижние',
-      top: 'Верхние',
-      side_bottom: 'Нижние боковые',
-      side_top: 'Верхние боковые'
+      bottom: I18n.t('cars.bottom_places'),
+      top: I18n.t('cars.top_places'),
+      side_bottom: I18n.t('cars.side_bottom_places'),
+      side_top: I18n.t('cars.side_top_places')
+
   }.freeze
 
 end

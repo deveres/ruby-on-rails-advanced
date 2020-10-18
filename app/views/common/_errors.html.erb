@@ -1,9 +1,9 @@
 <% if resource.errors.any? %>
   <div id="error_explanation" class="alert alert-danger" role="alert">
-    <h4 class="alert-heading">Ошибка!</h4>
+    <h4 class="alert-heading"><%= t('.error') %></h4>
 
 
-    <p><%= pluralize(resource.errors.count, "errors") %> prohibited this resource from being saved:</p>
+    <p><%= t('.errors') %></p>
     <hr>
     <ul>
       <% resource.errors.full_messages.each do |message| %>

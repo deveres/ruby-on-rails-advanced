@@ -1,0 +1,17 @@
+<h4><%= t('.add_to_route') %></h4>
+
+<%= form_tag add_station_to_admin_route_path(@route), method: :post do %>
+
+  <div class="form-group">
+    <%= label_tag t('.railway_station') %>
+    <%= select_tag :railway_station_id, options_for_select(RailwayStation.pluck(:title, :id)), :class => "form-control" %>
+
+  </div>
+  <div class="form-group">
+    <%= label_tag t('.position') %>
+    <%= number_field_tag :position, {}, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= submit_tag(t('.add_station'), {:class => 'btn btn-warning'}) %>
+  </div>
+<% end %>
